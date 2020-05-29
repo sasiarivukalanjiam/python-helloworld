@@ -2,8 +2,19 @@ pipeline {
   agent none
   stages {
     stage('Job1 ') {
-      steps {
-        build 'testjob'
+      parallel {
+        stage('Job1 ') {
+          steps {
+            build 'testjob'
+          }
+        }
+
+        stage('job3') {
+          steps {
+            build 'testjob3'
+          }
+        }
+
       }
     }
 
